@@ -91,8 +91,24 @@ Saya mencoba untuk membandingkan kedua foto berikut,
 
 ![Image](https://github.com/user-attachments/assets/c9bb477d-0792-409a-be94-8f7c30c89a8c)
 
-![Image](https://github.com/user-attachments/assets/c9bb477d-0792-409a-be94-8f7c30c89a8c)
+![Image](https://github.com/user-attachments/assets/872f2b7b-a767-4c20-9e06-e3726fcbc747)
 
 Kemudian hasil yg didapatkan seperti ini:
 
+![Image](https://github.com/user-attachments/assets/767b986a-540d-410c-9a43-4c1db60bf834)
 
+
+Hasil tersebut menyatakan bahwa dua wajah yang Anda unggah terdeteksi mirip oleh model DeepFace. Penjelasannya:
+
+**Jarak (distance) = 0.6357**
+DeepFace mengubah setiap wajah jadi vektor “fitur” di ruang multidimensi, lalu menghitung jarak (misalnya Euclidean) antara dua vektor itu. Semakin kecil jaraknya, semakin mirip kedua wajah.
+
+**Threshold bawaan ≈ 0.68**
+DeepFace biasanya menggunakan ambang (threshold) 0.68 untuk memutuskan “match” vs “no match.”
+
+Kalau distance < threshold → verified = true (✅ Faces match).
+
+Kalau distance ≥ threshold → verified = false (❌ Faces do not match).
+
+**0.6357 < threshold**
+Karena 0.6357 berada di bawah ambang (~0.68), model menganggap kedua gambar itu merupakan wajah orang yang sama (mirip).
