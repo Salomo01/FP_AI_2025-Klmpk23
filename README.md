@@ -86,7 +86,7 @@ DeepFace.verify result: {
 
 ```
 
-Berikut adalah beberapa dokumentasi untuk hasil pengerjaan:
+Berikut adalah dokumentasi untuk hasil pengerjaan:
 Saya mencoba untuk membandingkan kedua foto berikut,
 
 ![Image](https://github.com/user-attachments/assets/c9bb477d-0792-409a-be94-8f7c30c89a8c)
@@ -104,7 +104,7 @@ Hasil tersebut menyatakan bahwa dua wajah yang Anda unggah terdeteksi mirip oleh
 DeepFace mengubah setiap wajah jadi vektor “fitur” di ruang multidimensi, lalu menghitung jarak (misalnya Euclidean) antara dua vektor itu. Semakin kecil jaraknya, semakin mirip kedua wajah.
 
 **Threshold bawaan ≈ 0.68**
-DeepFace biasanya menggunakan ambang (threshold) 0.68 untuk memutuskan “match” vs “no match.”
+DeepFace yang dipakai menggunakan ambang (threshold) 0.68 untuk memutuskan “match” vs “no match.”
 
 Kalau distance < threshold → verified = true (✅ Faces match).
 
