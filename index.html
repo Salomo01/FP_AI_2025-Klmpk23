@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Similarity Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <h1>Face Similarity Checker</h1>
+  <form id="upload-form">
+    <div>
+      <label for="image1">Load Image 1:</label>
+      <input type="file" id="image1" name="image1" accept="image/*" required>
+    </div>
+    <div>
+      <label for="image2">Load Image 2:</label>
+      <input type="file" id="image2" name="image2" accept="image/*" required>
+    </div>
+    <button type="submit">Predict</button>
+  </form>
+  <div id="result"></div>
+
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
