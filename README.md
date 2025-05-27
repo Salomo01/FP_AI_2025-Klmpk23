@@ -87,3 +87,8 @@ DeepFace.verify result: {
 ```
 
 Berikut adalah beberapa dokumentasi untuk hasil pengerjaan:
+Saya mencoba untuk membandingkan kedua foto berikut,
+
+![Image](https://github.com/user-attachments/assets/c9bb477d-0792-409a-be94-8f7c30c89a8c)
+
+
