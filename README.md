@@ -1,1 +1,89 @@
 # FP_AI_2025-Klmpk23
+
+# Aplikasi Web Face Similarity 🔍
+
+Sebuah aplikasi web sederhana untuk **membandingkan dua gambar wajah** dan mengukur tingkat kemiripannya menggunakan deep learning. Proyek ini memanfaatkan [DeepFace](https://github.com/serengil/deepface) — sebuah framework Python yang ringan untuk pengenalan wajah dan analisis atribut wajah.
+
+## 🧠 Konsep dan Model
+
+Aplikasi ini menggunakan library **DeepFace**, yang mendukung berbagai model pengenalan wajah seperti:
+
+- VGG-Face
+- Facenet
+- OpenFace
+- DeepFace (default)
+- Dlib
+- ArcFace
+- SFace
+
+Secara default, aplikasi ini menggunakan **model VGG-Face**, yaitu sebuah jaringan saraf convolutional (CNN) yang sudah dilatih (pre-trained) pada dataset wajah yang besar. Model ini mengekstrak **embedding** (fitur wajah dalam bentuk vektor) dari setiap gambar, lalu menghitung **jarak cosine** antar dua embedding tersebut.
+
+Semakin kecil nilai jaraknya, semakin mirip wajah yang dibandingkan.
+
+## 📦 Teknologi yang Digunakan
+
+- **Python**
+- **Flask** – backend web
+- **DeepFace** – pengenalan wajah dan perhitungan jarak
+- **HTML/CSS** – antarmuka pengguna
+- **Werkzeug** – untuk menangani file upload
+
+## 📁 Struktur Proyek
+
+```
+face_similarity_app/
+├── app.py # Aplikasi utama Flask
+├── templates/
+│ └── index.html # Antarmuka pengguna
+├── uploads/ # Folder sementara untuk gambar upload
+├── env/ # Virtual environment Python (gitignore)
+└── requirements.txt # Daftar dependensi Python
+```
+
+
+## 🚀 Cara Kerja
+
+1. Pengguna mengunggah **dua gambar wajah**.
+2. Aplikasi akan menggunakan **DeepFace** untuk:
+   - Mendeteksi wajah dalam gambar
+   - Mengekstrak fitur (embedding)
+   - Menghitung jarak antar fitur
+3. Hasil ditampilkan:
+   - Apakah wajah cocok (**Match**) atau tidak (**Not Match**)
+   - Nilai **distance (jarak kemiripan)**
+
+## ✅ Threshold (Ambang Batas)
+
+DeepFace secara default menggunakan threshold **0.4** untuk kebanyakan model:
+- Jika jarak ≤ 0.4 → Wajah dianggap sama (Match)
+- Jika jarak > 0.4 → Wajah dianggap berbeda (Not Match)
+
+Threshold ini bisa disesuaikan sesuai kebutuhan. Sedangkan untuk project ini threshold yg digunakan adalah , **6,8**.
+
+```
+@app.route('/upload', methods=['POST'])
+def upload():
+    # ... simpan gambar, panggil DeepFace.verify() ...
+    res = DeepFace.verify(path1, path2)
+
+    # Cetak semua hasil ke console server
+    print("DeepFace.verify result:", res)
+
+    return jsonify(res)
+
+```
+
+Hal ini terlihat ketika saya mengecek log servernya, kemudian ketika file dijalankan terdapat hasil seperti ini:
+
+```
+DeepFace.verify result: {
+  'verified': True,
+  'distance': 0.6357,
+  'max_threshold_to_verify': 0.68,
+  'model': 'VGG-Face',
+  ...
+}
+
+```
+
+Berikut adalah beberapa dokumentasi untuk hasil pengerjaan:
