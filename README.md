@@ -63,7 +63,7 @@ Threshold ini bisa disesuaikan sesuai kebutuhan. Sedangkan untuk project ini thr
 ```
 @app.route('/upload', methods=['POST'])
 def upload():
-    # ... simpan gambar, panggil DeepFace.verify() ...
+   
     res = DeepFace.verify(path1, path2)
 
     # Cetak semua hasil ke console server
@@ -81,7 +81,6 @@ DeepFace.verify result: {
   'distance': 0.6357,
   'max_threshold_to_verify': 0.68,
   'model': 'VGG-Face',
-  ...
 }
 
 ```
