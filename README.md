@@ -97,7 +97,7 @@ Kemudian hasil yg didapatkan seperti ini:
 ![Image](https://github.com/user-attachments/assets/767b986a-540d-410c-9a43-4c1db60bf834)
 
 
-Hasil tersebut menyatakan bahwa dua wajah yang diunggah terdeteksi mirip oleh model DeepFace. Penjelasannya:
+Hasil tersebut menyatakan bahwa dua wajah yang diunggah terdeteksi mirip oleh app-nya. Penjelasannya:
 
 **Jarak (distance) = 0.6357**
 DeepFace mengubah setiap wajah jadi vektor “fitur” di ruang multidimensi, lalu menghitung jarak (misalnya Euclidean) antara dua vektor itu. Semakin kecil jaraknya, semakin mirip kedua wajah.
