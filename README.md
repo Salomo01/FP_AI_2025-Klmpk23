@@ -73,7 +73,7 @@ def upload():
 
 ```
 
-Hal ini terlihat ketika saya mengecek log servernya, kemudian ketika file dijalankan terdapat hasil seperti ini:
+Hal ini terlihat ketika mengecek log servernya, kemudian ketika file dijalankan terdapat hasil seperti ini:
 
 ```
 DeepFace.verify result: {
