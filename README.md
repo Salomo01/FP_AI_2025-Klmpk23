@@ -58,7 +58,7 @@ DeepFace secara default menggunakan threshold **0.4** untuk kebanyakan model:
 - Jika jarak ≤ 0.4 → Wajah dianggap sama (Match)
 - Jika jarak > 0.4 → Wajah dianggap berbeda (Not Match)
 
-Threshold ini bisa disesuaikan sesuai kebutuhan. Sedangkan untuk project ini threshold yg digunakan adalah , **6,8**.
+Threshold ini bisa disesuaikan sesuai kebutuhan. Sedangkan untuk project ini threshold yg digunakan adalah **"6,8"**.
 
 ```
 @app.route('/upload', methods=['POST'])
