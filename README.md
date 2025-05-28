@@ -16,7 +16,7 @@ Aplikasi ini menggunakan library **DeepFace**, yang mendukung berbagai model pen
 - ArcFace
 - SFace
 
-Secara default, aplikasi ini menggunakan **model VGG-Face**, yaitu sebuah jaringan saraf convolutional (CNN) yang sudah dilatih (pre-trained) pada dataset wajah yang besar. Model ini mengekstrak **embedding** (fitur wajah dalam bentuk vektor) dari setiap gambar, lalu menghitung **jarak cosine** antar dua embedding tersebut.
+Secara default, aplikasi ini menggunakan **model DeepFace**, yaitu sebuah jaringan saraf convolutional (CNN) yang sudah dilatih (pre-trained) pada dataset wajah yang besar. Model ini mengekstrak **embedding** (fitur wajah dalam bentuk vektor) dari setiap gambar, lalu menghitung **jarak cosine** antar dua embedding tersebut.
 
 Semakin kecil nilai jaraknya, semakin mirip wajah yang dibandingkan.
 
