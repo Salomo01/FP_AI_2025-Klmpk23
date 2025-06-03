@@ -448,3 +448,88 @@ Buka browser ke http://127.0.0.1:5000/.
 Coba Load Image 1, Load Image 2, lalu klik Predict.
 
 Hasil verifikasi akan muncul di bawah form.
+
+
+
+
+**Pengembangan Sistem Face Similarity Checker Berbasis DeepFace dan Flask**
+Abstrak
+Sistem Face Similarity Checker ini dikembangkan untuk mengukur kemiripan dua wajah secara otomatis menggunakan framework DeepFace dan Flask. Aplikasi menerima dua gambar wajah sebagai input, mengekstrak fitur menggunakan berbagai model deep learning seperti VGG-Face, Facenet, dan ArcFace, kemudian menghitung similarity score berdasarkan jarak embedding. Sistem diimplementasikan dengan arsitektur client-server, di mana frontend dibangun menggunakan HTML, CSS, dan JavaScript, sedangkan backend menggunakan Python Flask. Hasil pengujian menunjukkan bahwa model Facenet512 memberikan akurasi tertinggi pada dataset LFW. Sistem ini dapat digunakan untuk verifikasi identitas, keamanan, dan aplikasi lain yang memerlukan pengukuran kemiripan wajah.
+
+1. Pendahuluan
+1.1 Latar Belakang
+Pengenalan wajah adalah salah satu bidang penelitian utama dalam computer vision. Selain pengenalan identitas, pengukuran kemiripan wajah (face similarity) menjadi penting untuk berbagai aplikasi seperti verifikasi dokumen, pemeriksaan medis, dan keamanan. Berbeda dengan face recognition, face similarity berfokus pada seberapa mirip dua wajah secara visual, bukan pada identitasnya.
+
+1.2 Rumusan Masalah
+Bagaimana membangun sistem web yang dapat mengukur kemiripan dua wajah dengan akurasi tinggi menggunakan model deep learning dan framework DeepFace?
+
+1.3 Tujuan
+Mengembangkan aplikasi web untuk mengukur kemiripan wajah.
+
+Menerapkan beberapa model deep learning (VGG-Face, Facenet, ArcFace, dll).
+
+Menyajikan hasil similarity score secara interaktif.
+
+2. Tinjauan Pustaka
+Penelitian sebelumnya telah mengembangkan berbagai model deep learning untuk face recognition, seperti VGG-Face, Facenet, dan ArcFace. Model-model ini mampu mengekstrak fitur wajah ke dalam bentuk embedding vektor berdimensi tinggi, sehingga kemiripan dua wajah dapat dihitung menggunakan metrik jarak seperti Euclidean atau cosine similarity . Framework DeepFace menyediakan API yang memudahkan integrasi berbagai model ini dalam aplikasi Python .
+
+3. Metodologi
+3.1 Arsitektur Sistem
+Sistem terdiri dari frontend (HTML, CSS, JavaScript) untuk upload gambar dan menampilkan hasil, serta backend (Flask + DeepFace) untuk pemrosesan gambar dan perhitungan similarity.
+
+3.2 Proses Kerja Sistem
+Pengguna mengunggah dua gambar wajah melalui web.
+
+Backend menerima gambar, menyimpannya, dan mengekstrak fitur menggunakan model deep learning pilihan.
+
+Sistem menghitung similarity score berdasarkan jarak antara dua embedding.
+
+Hasil (match/tidak match dan nilai distance) dikirim kembali ke frontend.
+
+3.3 Snippet Kode Backend
+```
+python
+@app.route('/upload', methods=['POST'])
+def upload():
+    img1 = request.files.get('image1')
+    img2 = request.files.get('image2')
+    model_name = request.form.get('model', 'VGG-Face')
+    res = DeepFace.verify(img1, img2, model_name=model_name)
+    return jsonify(res)
+```
+
+4. Implementasi
+4.1 Frontend
+Frontend menggunakan form upload gambar dan preview hasil secara real-time dengan JavaScript.
+
+4.2 Backend
+Backend menggunakan Flask untuk menerima request dan DeepFace untuk ekstraksi fitur serta verifikasi wajah.
+
+5. Hasil dan Pembahasan
+5.1 Contoh Output
+```
+json
+{
+  "verified": true,
+  "distance": 0.23,
+  "model": "Facenet512",
+  "similarity_metric": "cosine"
+}
+```
+5.2 Evaluasi Model
+Pengujian pada dataset LFW menunjukkan model Facenet512 memiliki akurasi tertinggi untuk tugas face similarity, diikuti oleh ArcFace dan VGG-Face.
+
+5.3 Kendala
+Variasi pencahayaan dan pose dapat mempengaruhi akurasi.
+
+Model dengan akurasi tinggi membutuhkan komputasi lebih besar.
+
+6. Kesimpulan
+Sistem Face Similarity Checker berbasis DeepFace dan Flask telah berhasil diimplementasikan dan diuji. Model Facenet512 memberikan hasil terbaik dalam pengukuran kemiripan wajah. Pengembangan selanjutnya dapat menambahkan fitur face alignment dan augmentasi data untuk meningkatkan robustnes sistem.
+
+Daftar Pustaka
+Schroff, F., Kalenichenko, D., & Philbin, J. (2015). Facenet: A unified embedding for face recognition and clustering. CVPR.
+
+Deng, J., Guo, J., & Zafeiriou, S. (2019). Arcface: Additive angular margin loss for deep face recognition. CVPR.
+
+DeepFace Documentation. https://pypi.org/project/deepface/
